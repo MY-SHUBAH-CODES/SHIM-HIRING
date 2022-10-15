@@ -7,4 +7,8 @@ def home(self):
 
 def about(self):
     return render(self,'about.html')
+
+def contact(self):
+    return render(self, 'contact.html')
+
     
