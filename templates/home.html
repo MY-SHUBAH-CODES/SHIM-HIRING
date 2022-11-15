@@ -6,7 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>home page</title>
 </head>
-<body>
-    <p>  this is home page</p>
+<body style="background-color:rgba(107, 178, 176, 0.881);">
+  <div class="container">
+  <input  type="search" id="gsearch" name="gsearch" style="margin-left:800px;width:600px;height:50px;font-size:20px;">
+<input type="button" name="Search" value="Submit"style="color: white; background-color: darkgreen;height:50px; width:90px;" >
+<button id="1" onClick="reply_click()"></button>
+</div>
+
+    <form action="http://127.0.0.1:8000/" method="post">{% csrf_token %}
+        
+    
+    <p style="text-align:center;font-size: 50px; text-shadow:3px;"><u>BIO-DATA</u></p>
+    {% load static %}
+    {%for i in useform%}
+    <div class="label" style="font-size: 30px;">
+    {{i.label}}
+
+{{i}}
+</div>
+
+  
+<br>
+<br>
+
+    
+   {% endfor %}
+   <br>
+<input type="submit" name="Submit" value="Submit" style="margin-top: 10px;color: white; background-color: darkgreen;height:40px; width:90px;">
+
+</div>
+</form>
+
+<br>
+<br>
+<br>
+<br>
+<p style="text-align:center;font-size: 50px; text-shadow:3px;"><u>ALL APPLICATIONS</u></p>
+
+{%for i in data%}
+<div id="wrapper">
+<a href="{% url 'about'%}">{{i.id}}</a>
+
+  {{i.first_name}}
+  {{i.last_name}}
+  {{i.about_you}}
+  
+</div>
+{%endfor%}
 </body>
+
 </html>
+
+
