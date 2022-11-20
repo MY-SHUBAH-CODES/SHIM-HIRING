@@ -9,8 +9,11 @@ urlpatterns = [
 
     
     path('',views.home,name="home"),
-    path('search/<int:name/', views.search_records, name="search_records"),
-    path(r'^about/$', views.about, name="about"),
+    path('add_applicant/', views.add_applicant, name="add_applicant"),
+    path('your_applicant/', views.your_applicant, name="your_applicant"),
+    path('about/<int:pk>/', views.about, name="about"),
+    path('send_email/', views.send_email, name="send_email"),
     path('contact/', views.contact, name="contact"),
+
     
 ]

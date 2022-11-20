@@ -1,9 +1,9 @@
 from django import forms
-from .models import userdata
+from .models import BASIC_DATA
 
 class Myform(forms.ModelForm):
     
     class Meta:
-        model = userdata
-        fields = ["first_name","last_name","father_name","about_you","profile"]
+        model = BASIC_DATA
+        fields = ["first_name","last_name","father_name","mother_name","about_you","profile"]
 

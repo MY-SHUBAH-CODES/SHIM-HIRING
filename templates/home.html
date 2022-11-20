@@ -1,60 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+  background-color: aquamarine;
+
+}
+table,th,td {
+            background-color: aquamarine;
+            border: 1px solid black;
+            font-size:25px;
+            margin-block-start:2px;
+        }
+
+.card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+            font-family: arial;
+        }
+
+        .title {
+            color: grey;
+            font-size: 18px;
+        }
+
+        button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 22px;
+            color: black;
+        }
+
+        button:hover,
+        a:hover {
+            opacity: 0.7;
+        }
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
 </head>
-<body style="background-color:rgba(107, 178, 176, 0.881);">
-  <div class="container">
-  <input  type="search" id="gsearch" name="gsearch" style="margin-left:800px;width:600px;height:50px;font-size:20px;">
-<input type="button" name="Search" value="Submit"style="color: white; background-color: darkgreen;height:50px; width:90px;" >
-<button id="1" onClick="reply_click()"></button>
+<body>
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="/add_applicant">add applicant</a>
+  <a href="/your_applicant">your applicant</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
 </div>
 
-    <form action="http://127.0.0.1:8000/" method="post">{% csrf_token %}
-        
-    
-    <p style="text-align:center;font-size: 50px; text-shadow:3px;"><u>BIO-DATA</u></p>
-    {% load static %}
-    {%for i in useform%}
-    <div class="label" style="font-size: 30px;">
-    {{i.label}}
+<span style="font-size:50px;cursor:pointer" onclick="openNav()">&#9776;</span>
+{%block content%}
 
-{{i}}
-</div>
+{%endblock%}
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
 
-  
-<br>
-<br>
-
-    
-   {% endfor %}
-   <br>
-<input type="submit" name="Submit" value="Submit" style="margin-top: 10px;color: white; background-color: darkgreen;height:40px; width:90px;">
-
-</div>
-</form>
-
-<br>
-<br>
-<br>
-<br>
-<p style="text-align:center;font-size: 50px; text-shadow:3px;"><u>ALL APPLICATIONS</u></p>
-
-{%for i in data%}
-<div id="wrapper">
-<a href="{% url 'about'%}">{{i.id}}</a>
-
-  {{i.first_name}}
-  {{i.last_name}}
-  {{i.about_you}}
-  
-</div>
-{%endfor%}
-</body>
-
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+   
 </html>
-
-
