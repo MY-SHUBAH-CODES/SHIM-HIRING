@@ -1,0 +1,35 @@
+
+{% extends "home.html" %}
+    {% block content %}
+
+    <p style="text-align:center;font-size: 50px; text-shadow:3px;"><u>BIO-DATA</u></p>
+
+    <table style="width:100%">
+        <tr>
+            <td style="background-color:red;height:70px;font-size:35px;">ID</td>
+            <td style="background-color:red ;height:70px;font-size:35px;">FIRST NAME</td>
+            <td style="background-color:red ;height:70px;font-size:35px;">LAST NAME</td>
+            <td style="background-color:red ;height:70px;font-size:35px;">ABOUT</td>
+            <td style="background-color:red ;height:70px;font-size:35px;">EXPLORE</td>
+
+
+        </tr>
+    {%for data in all_data%}        
+            <tr>
+                <td>{{data.id}}</td>
+                <td>{{data.first_name}}</td>
+                <td>{{data.last_name}}</td>
+                <td>{{data.about_you}}</td>
+                <td><a href="{% url 'about' data.id%}">Click</a></td>
+
+
+            </tr>
+       
+          <!-- {{data.id}}
+          {{data.first_name}}  
+          {{data.last_name}}
+          {{data.about_you}} -->
+        {%endfor%}
+        </table>
+
+ {%endblock%}

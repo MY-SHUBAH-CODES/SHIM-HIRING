@@ -1,0 +1,28 @@
+{% extends "home.html" %}
+    {% block content %}
+
+
+    <form action="http://127.0.0.1:8000/add_applicant/" method="post">{% csrf_token %}
+
+
+        <p style="text-align:center;font-size: 50px; text-shadow:3px;"><u>BIO-DATA</u></p>
+        {%for i in useform%}
+        <div class="label" style="font-size: 30px;">
+            {{i.label}}
+
+            {{i}}
+        </div>
+
+
+        <br>
+        <br>
+
+
+        {% endfor %}
+        <br>
+        <input type="submit" name="Submit" value="Submit"
+            style="margin-top: 10px;color: white; background-color: darkgreen;height:40px; width:90px;">
+
+        </div>
+    </form>
+    {% endblock %}
