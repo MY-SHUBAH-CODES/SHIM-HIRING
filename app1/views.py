@@ -18,20 +18,25 @@ from django.core.mail import send_mail
 # Create your views here.
 def add_applicant(request):
     if request.method == 'POST':
-        fm = Myform(request.POST)
+        fm = Myform(request.POST,request.FILES)
+        if fm.is_valid():
+            fm.save()
+            return redirect('.')
+
         # a=fm.data.get(all)
-        # print(a)
-        id = request.POST.get('id')       
-        firstname = fm['first_name'].data
-        lastname = fm['last_name'].data
-        fathername = fm['father_name'].data
-        mothername =  fm['mother_name'].data
-        aboutyou = fm['about_you'].data
-        profile = request.POST.get('profile')
-        # print(profile)
-        user_data =BASIC_DATA(id,firstname,lastname,fathername,mothername,aboutyou,profile)
-        user_data.save()
-        return redirect('.')
+        # # print(a)
+        # id = request.POST.get('id')       
+        # firstname = fm['first_name'].data
+        # lastname = fm['last_name'].data
+        # fathername = fm['father_name'].data
+        # mothername =  fm['mother_name'].data
+        # aboutyou = fm['about_you'].data
+        # file=request.FILES
+        # print(file)
+        # profile = request..get('profile')
+        # # print(profile)
+        # user_data =BASIC_DATA(id,firstname,lastname,fathername,mothername,aboutyou,profile)
+        # user_data.save()
         # return render(request, 'home.html', {"useform":Myform})
     else:
         return render(request,'add_applicant.html',{"useform": Myform})
@@ -66,6 +71,7 @@ def search_records(request,id):
 
 def about(request,pk):
     data=BASIC_DATA.objects.get(id=pk)
+    print(data.profile.path)
     return render(request,'about.html',{"data":data})
 
     return render(request,'about.html')

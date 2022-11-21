@@ -2,7 +2,8 @@
     {% block content %}
 
 
-    <form action="http://127.0.0.1:8000/add_applicant/" method="post">{% csrf_token %}
+    <form action="http://127.0.0.1:8000/add_applicant/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
 
 
         <p style="text-align:center;font-size: 50px; text-shadow:3px;"><u>BIO-DATA</u></p>

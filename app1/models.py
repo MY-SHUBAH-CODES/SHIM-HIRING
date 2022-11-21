@@ -7,4 +7,4 @@ class BASIC_DATA(models.Model):
     father_name = models.CharField(max_length= 200)
     mother_name=models.CharField(max_length=200, default='')
     about_you = models.TextField()
-    profile = models.ImageField(upload_to="media/profile_images")
+    profile = models.FileField(upload_to="profile_images/")
