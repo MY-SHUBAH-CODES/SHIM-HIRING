@@ -1,14 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>signup page</title>
-</head>
-<body>
-
-    <h1> signup here</h1>
+{% extends "home.html" %}
+    {% block content %}
+    <form action="http://127.0.0.1:8000/auth/signup/" method="post" enctype="multipart/form-data" novalidate>
+    {% csrf_token %}
+    <h1 style="text-align: center;"> Signup Here</h1>
     
-</body>
-</html>
+    {% for i in form %}
+    {{i.label_tag}} {{i}} {{i.errors|striptags}} <br> <br>
+    {%endfor%}
+    
+<input type="submit" name="Submit" value="Submit"
+    style="margin-top: 10px;color: white; background-color: darkgreen;height:40px; width:90px;">
+
+</form>
+{%endblock%}
+
+

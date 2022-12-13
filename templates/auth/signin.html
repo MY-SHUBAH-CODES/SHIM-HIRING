@@ -1,0 +1,37 @@
+
+{%extends 'home.html'%}
+{%block content%}
+
+<form action="http://127.0.0.1:8000/auth/signin/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+    <h1 style="text-align: center;"> SignIn Here</h1>
+
+    <div class="container" style="font-size: 30px;">
+        Username
+
+        <input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus=""
+            required="" id="id_username">
+
+
+    </div>
+
+    <div class="container" style="font-size: 30px;">
+        Password
+
+        <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1">
+
+
+    </div>
+
+    
+
+
+    <br>
+    <input type="submit" name="Submit" value="Submit"
+        style="margin-top: 10px;color: white; background-color: darkgreen;height:40px; width:90px;">
+
+</form>
+<p> Not User/<a href="{%url 'signup'%}" style="color:blue;">signup</a></p>
+
+{%endblock%}

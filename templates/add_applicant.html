@@ -7,6 +7,7 @@
 
 
         <p style="text-align:center;font-size: 50px; text-shadow:3px;"><u>BIO-DATA</u></p>
+        
         {%for i in useform%}
         <div class="label" style="font-size: 30px;">
             {{i.label}}
@@ -21,9 +22,7 @@
 
         {% endfor %}
         <br>
-        <input type="submit" name="Submit" value="Submit"
-            style="margin-top: 10px;color: white; background-color: darkgreen;height:40px; width:90px;">
-
-        </div>
+        <input type="submit" name="Submit" value="Submit" style="margin-top: 10px;color: white; background-color:darkgreen;height:40px; width:90px;">
+      
     </form>
     {% endblock %}
